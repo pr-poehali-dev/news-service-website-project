@@ -1,18 +1,36 @@
 import Icon from "@/components/ui/icon";
+import { useNavigate } from "react-router-dom";
 
 const Footer = () => {
+  const navigate = useNavigate();
   const sections = [
     {
       title: "Разделы",
-      links: ["Новости", "События", "Репортажи", "Президент", "Расследования"],
+      links: [
+        { text: "Новости", path: "#" },
+        { text: "События", path: "#" },
+        { text: "Репортажи", path: "#" },
+        { text: "Президент", path: "#" },
+        { text: "Расследования", path: "#" },
+      ],
     },
     {
       title: "О нас",
-      links: ["О пресс-службе", "Контакты", "Аккредитация", "Правила"],
+      links: [
+        { text: "О пресс-службе", path: "#" },
+        { text: "Контакты", path: "#" },
+        { text: "Аккредитация", path: "#" },
+        { text: "Правила", path: "#" },
+      ],
     },
     {
       title: "Сервисы",
-      links: ["Архив", "Подписка", "Мобильное приложение", "RSS"],
+      links: [
+        { text: "Архив", path: "#" },
+        { text: "Подписка", path: "/subscription" },
+        { text: "Мобильное приложение", path: "#" },
+        { text: "RSS", path: "#" },
+      ],
     },
   ];
 
@@ -43,8 +61,17 @@ const Footer = () => {
               <ul className="space-y-2">
                 {section.links.map((link, linkIndex) => (
                   <li key={linkIndex}>
-                    <a href="#" className="text-sm opacity-90 hover:opacity-100 hover:underline transition-opacity">
-                      {link}
+                    <a 
+                      href={link.path} 
+                      onClick={(e) => {
+                        if (link.path.startsWith('/')) {
+                          e.preventDefault();
+                          navigate(link.path);
+                        }
+                      }}
+                      className="text-sm opacity-90 hover:opacity-100 hover:underline transition-opacity cursor-pointer"
+                    >
+                      {link.text}
                     </a>
                   </li>
                 ))}

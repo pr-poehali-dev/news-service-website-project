@@ -2,8 +2,10 @@ import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
+import { useNavigate } from "react-router-dom";
 
 const LiveSection = () => {
+  const navigate = useNavigate();
   const liveEvents = [
     {
       title: "Пресс-конференция Президента",
@@ -117,7 +119,11 @@ const LiveSection = () => {
                 <p className="text-sm opacity-90 mb-4">
                   Получайте важные события и срочные новости первыми
                 </p>
-                <Button variant="secondary" className="w-full">
+                <Button 
+                  variant="secondary" 
+                  className="w-full"
+                  onClick={() => navigate('/subscription')}
+                >
                   Подписаться
                 </Button>
               </CardContent>
