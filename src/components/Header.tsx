@@ -1,14 +1,18 @@
 import { Bell, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import Icon from "@/components/ui/icon";
+import { useNavigate } from "react-router-dom";
 
 const Header = () => {
+  const navigate = useNavigate();
+  
   const menuItems = [
     { label: "Новости", href: "#news" },
     { label: "События", href: "#events" },
     { label: "Репортажи", href: "#reports" },
     { label: "Президент", href: "#president" },
     { label: "Расследования", href: "#investigations" },
+    { label: "Реестр сотрудников", href: "/employee-registry", isRoute: true },
   ];
 
   return (
@@ -36,7 +40,13 @@ const Header = () => {
               <a
                 key={item.label}
                 href={item.href}
-                className="px-4 py-2 text-sm font-medium hover:bg-primary-foreground/10 rounded transition-colors"
+                onClick={(e) => {
+                  if (item.isRoute) {
+                    e.preventDefault();
+                    navigate(item.href);
+                  }
+                }}
+                className="px-4 py-2 text-sm font-medium hover:bg-primary-foreground/10 rounded transition-colors cursor-pointer"
               >
                 {item.label}
               </a>
