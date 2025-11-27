@@ -61,6 +61,14 @@ const Header = () => {
             <Button variant="ghost" size="icon" className="text-primary-foreground hover:bg-primary-foreground/10">
               <Icon name="Bell" size={20} />
             </Button>
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-primary-foreground hover:bg-primary-foreground/10"
+              onClick={() => navigate("/admin")}
+            >
+              <Icon name="Shield" size={20} />
+            </Button>
           </div>
         </div>
       </div>

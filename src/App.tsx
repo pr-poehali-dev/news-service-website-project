@@ -10,6 +10,7 @@ import SubscriptionPage from "./components/SubscriptionPage";
 import EmployeeProfile from "./components/EmployeeProfile";
 import EmployeeRegistry from "./components/EmployeeRegistry";
 import MikhailProfile from "./pages/MikhailProfile";
+import AdminPanel from "./pages/AdminPanel";
 
 const queryClient = new QueryClient();
 
@@ -25,6 +26,7 @@ const App = () => (
           <Route path="/employee-profile" element={<EmployeeProfile />} />
           <Route path="/employee-registry" element={<EmployeeRegistry />} />
           <Route path="/mikhail-nefedov" element={<MikhailProfile />} />
+          <Route path="/admin" element={<AdminPanel />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>
