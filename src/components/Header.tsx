@@ -13,6 +13,7 @@ const Header = () => {
     { label: "Президент", href: "#president" },
     { label: "Расследования", href: "#investigations" },
     { label: "Реестр сотрудников", href: "/employee-registry", isRoute: true },
+    { label: "М. Нефёдов", href: "/mikhail-nefedov", isRoute: true },
   ];
 
   return (
