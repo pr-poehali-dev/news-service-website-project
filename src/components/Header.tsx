@@ -1,10 +1,12 @@
 import { Bell, Search } from "lucide-react";
 import { Button } from "@/components/ui/button";
+import { Badge } from "@/components/ui/badge";
 import Icon from "@/components/ui/icon";
 import { useNavigate } from "react-router-dom";
 
 const Header = () => {
   const navigate = useNavigate();
+  const unreadNotifications = 2;
   
   const menuItems = [
     { label: "Новости", href: "#news" },
@@ -58,8 +60,21 @@ const Header = () => {
             <Button variant="ghost" size="icon" className="text-primary-foreground hover:bg-primary-foreground/10">
               <Icon name="Search" size={20} />
             </Button>
-            <Button variant="ghost" size="icon" className="text-primary-foreground hover:bg-primary-foreground/10">
+            <Button
+              variant="ghost"
+              size="icon"
+              className="text-primary-foreground hover:bg-primary-foreground/10 relative"
+              onClick={() => navigate("/notifications")}
+            >
               <Icon name="Bell" size={20} />
+              {unreadNotifications > 0 && (
+                <Badge
+                  variant="destructive"
+                  className="absolute -top-1 -right-1 h-5 w-5 p-0 flex items-center justify-center text-xs"
+                >
+                  {unreadNotifications}
+                </Badge>
+              )}
             </Button>
             <Button
               variant="ghost"

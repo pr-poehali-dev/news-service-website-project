@@ -111,7 +111,7 @@ const AdminPanel = () => {
   const handleApprovePublication = (id: number) => {
     toast({
       title: "Публикация одобрена",
-      description: "Статья успешно опубликована на сайте",
+      description: "Статья успешно опубликована на сайте. Автор получит уведомление.",
     });
   };
 

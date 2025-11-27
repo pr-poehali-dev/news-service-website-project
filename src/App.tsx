@@ -11,6 +11,7 @@ import EmployeeProfile from "./components/EmployeeProfile";
 import EmployeeRegistry from "./components/EmployeeRegistry";
 import MikhailProfile from "./pages/MikhailProfile";
 import AdminPanel from "./pages/AdminPanel";
+import NotificationsPage from "./pages/NotificationsPage";
 
 const queryClient = new QueryClient();
 
@@ -27,6 +28,7 @@ const App = () => (
           <Route path="/employee-registry" element={<EmployeeRegistry />} />
           <Route path="/mikhail-nefedov" element={<MikhailProfile />} />
           <Route path="/admin" element={<AdminPanel />} />
+          <Route path="/notifications" element={<NotificationsPage />} />
           {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
           <Route path="*" element={<NotFound />} />
         </Routes>

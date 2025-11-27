@@ -7,9 +7,12 @@ import { Button } from "@/components/ui/button";
 import { Tabs, TabsContent, TabsList, TabsTrigger } from "@/components/ui/tabs";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
 import Icon from "@/components/ui/icon";
+import { useNavigate } from "react-router-dom";
 
 const MikhailProfile = () => {
   const [activeTab, setActiveTab] = useState("publications");
+  const navigate = useNavigate();
+  const unreadNotifications = 2;
 
   const profileData = {
     name: "Михаил Нефёдов",
@@ -153,11 +156,43 @@ const MikhailProfile = () => {
           </div>
         </Card>
 
+        {unreadNotifications > 0 && (
+          <Card className="p-4 mb-6 bg-accent/10 border-accent">
+            <div className="flex items-center justify-between">
+              <div className="flex items-center gap-3">
+                <Icon name="Bell" size={24} className="text-accent" />
+                <div>
+                  <p className="font-semibold">У вас {unreadNotifications} новых уведомления</p>
+                  <p className="text-sm text-muted-foreground">
+                    Статус ваших публикаций обновлён
+                  </p>
+                </div>
+              </div>
+              <Button onClick={() => navigate("/notifications")}>
+                <Icon name="Eye" size={18} className="mr-2" />
+                Посмотреть
+              </Button>
+            </div>
+          </Card>
+        )}
+
         <Tabs value={activeTab} onValueChange={setActiveTab} className="space-y-6">
-          <TabsList className="grid w-full grid-cols-4 h-auto">
+          <TabsList className="grid w-full grid-cols-5 h-auto">
             <TabsTrigger value="publications" className="flex items-center gap-2">
               <Icon name="FileText" size={18} />
               Публикации
+            </TabsTrigger>
+            <TabsTrigger value="notifications" className="flex items-center gap-2 relative">
+              <Icon name="Bell" size={18} />
+              Уведомления
+              {unreadNotifications > 0 && (
+                <Badge
+                  variant="destructive"
+                  className="ml-1 h-5 w-5 p-0 flex items-center justify-center text-xs"
+                >
+                  {unreadNotifications}
+                </Badge>
+              )}
             </TabsTrigger>
             <TabsTrigger value="awards" className="flex items-center gap-2">
               <Icon name="Award" size={18} />
@@ -172,6 +207,23 @@ const MikhailProfile = () => {
               Статистика
             </TabsTrigger>
           </TabsList>
+
+          <TabsContent value="notifications" className="space-y-4">
+            <div className="mb-4">
+              <h2 className="text-2xl font-bold mb-2">Уведомления</h2>
+              <p className="text-muted-foreground">
+                Здесь отображаются уведомления о статусе ваших публикаций
+              </p>
+            </div>
+            <Button
+              onClick={() => navigate("/notifications")}
+              className="w-full"
+              size="lg"
+            >
+              <Icon name="Bell" size={20} className="mr-2" />
+              Открыть центр уведомлений
+            </Button>
+          </TabsContent>
 
           <TabsContent value="publications" className="space-y-4">
             <div className="flex items-center justify-between mb-4">
